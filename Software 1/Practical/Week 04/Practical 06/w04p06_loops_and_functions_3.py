@@ -1,3 +1,4 @@
+import practical_6
 # Exercise 2
 def split_text_by(text, separators):
     result = []
