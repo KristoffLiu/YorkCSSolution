@@ -65,7 +65,13 @@ def exercise_05():
     rasterise([1,2,3,4,5,6,7,8],4) 
 
 #Exercise 06
-def sum_column():
+def sum_column(table):
+    output = []
+    for i in range(len(table)):
+        for j in range(len(table))
 
 def exercise_06():
-    table = [[1,2,3],          [4,5,6],          [7,8,9]] 
+    table = [[1,2,3],
+             [4,5,6],
+             [7,8,9]]
+    
