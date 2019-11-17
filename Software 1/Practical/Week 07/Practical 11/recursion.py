@@ -11,11 +11,17 @@ def is_power(a,b):
 #Exercise 02
     #if it is a string
 def sum_digits_str(number):
-    return int(number[0]) + sum_digits_str(number[1:len(number)])
+    if len(number) == 1:
+        return int(number)
+    else:
+        return int(number[0]) + sum_digits_str(number[1:len(number)])
 
     #if it is a int
 def sum_digits(number):
-    return int(str(number)[0]) + sum_digits(int(str(number)[1:len(number)]))
+    if len(str(number)) == 1:
+        return number
+    else:
+        return int(str(number)[0]) + sum_digits(int(str(number)[1:len(number)]))
 
 #Exercise 03
 def rec_sum(numbers):
@@ -67,3 +73,5 @@ def merge(sorted_listA,sorted_listB):
         return sortedpart + merge(sorted_listA,sorted_listB)
     else:
         return []
+
+print(sum_digits_str("123"))
