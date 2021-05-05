@@ -1,0 +1,72 @@
+Jeremy Jacob
+19 August 2020
+
+The subdirectories and files in this directory define:
+  * two languages,
+  * an optimising compiler between them, and
+  * an interpreter for each.
+
+All definitions are in Haskell, and use libraries: "Data.Set",
+"Data.map.Strict", "Data.IntMap.Strict", and
+"Control.Monad.State.Lazy".
+
+The two languages are called
+M: a tiny machine-level language (it does not have input)
+N: a tiny high-level language (it does not have input or
+   procedures!)
+
+Material solely about M is found in the subdirectory M:
+  M.AbstractSyntax - defines the abstract syntax of M, and a pretty
+                     printer, "prettyprint :: M -> String".
+  M.Interpreter - defines "interpret :: M -> String", a small-step
+                  semantics interpreter for M. 
+  M.Optimiser - defines "optimise :: M -> M", which runs a global
+                optimisation algorithm (constant propagation via a
+                reachability analysis, followed by code elimination
+                via a liveness analysis) and a then a few local
+                optimisation algorithms (peephole optimisations).  It
+                also exports "def, use :: M -> Array Int (Set R)" and
+                "liveOut :: M -> Array Int (Set R)" for use by the
+                register allocation algorithm.
+  M.RegisterAllocation - defines "allocateRegisters :: Int -> M -> M",
+                         which takes the number of allocatable
+                         registers and an M program using symbolic
+                         register names, and replaces the symbolic
+                         registers by a mix of real register names and
+                         spilling, via a version of Chaitin's
+                         graph-colouring algorithm.
+
+Material solely about N is found in the subdirectory N:
+  N.AbstractSyntax - defines the abstract syntax of N, and a pretty
+                     printer, "prettyprint :: N -> String".
+  N.StaticCheck - defines two static semantic checks: "typecheck :: N
+                  -> String", which produces a report of type errors,
+                  and "checkInitB4Use :: N -> String", which produces
+                  a report detailing variables read before they are
+                  written to.
+  N.Simplify - defines "simplify :: N -> N", which is an optimiser
+               that simplifies expressions and statements as much as
+               possible.
+  N.Interpreter - defines "interpret :: N -> OutputBuffer", a big-step
+                  semantics interpreter for N.
+
+Material about compilation is found in the directory N2M:
+  N2M.Translate - defines "translate :: N -> M", which translates N to
+                  M using symbolic register names.  Fresh names for
+                  registers and labels are threded through the
+                  computation using the State monad.
+  N2M.Compile - defines "compile :: Int -> N -> Either String M",
+                which puts all the stages together, delivering either
+                an error report or the compiled, optimised code.  The
+                first parameter is the number of registers.
+
+The top level directory contains:
+  Examples - a collection of example N programs.  These exemplify
+             correct and incorrect programs, `macros' and
+             parameterisation.
+  Driver - utility code to run the compiler, pretty printer, etc.,
+           plus some examples of M programs.
+
+[Note: while M was chosen to mean "Machine language", the initials MN
+are those of Matt Naylor.  The work here is adapted from an original
+presentation by Dr Naylor.]
