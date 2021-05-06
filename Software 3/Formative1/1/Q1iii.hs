@@ -17,4 +17,13 @@ testcmbList =
 
 
 cmbList :: [a] -> [a] -> [a]
-cmbList fs ss = undefined
+cmbList fs ss = foldr (++) [] (map tuple2list (zip ss fs))
+    where
+        tuple2list (x,y) = [x,y]
+
+-- (1,0)--tuple 元组
+
+-- map 映射
+--     fx 数组
+-- map 映射
+--     fx value 数组

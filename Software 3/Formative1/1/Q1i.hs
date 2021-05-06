@@ -19,4 +19,5 @@ testP = (isPass [] == False) &&
  (isPass [5, 8, 12, 15] == True)
 
 isPass :: Predicate [Integer]
-isPass ns = sum ns >= 40
+-- isPass :: [Integer] -> Bool
+isPass ls = sum ls >= 40

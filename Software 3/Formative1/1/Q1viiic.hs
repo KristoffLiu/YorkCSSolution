@@ -12,4 +12,5 @@ testavg:: Bool
 testavg = avgSYS1 s1Db == 60.8
 
 avgSYS1 :: [CS1] -> Float   
-avgSYS1  = undefined
+avgSYS1 ss = fromIntegral(sum list) / fromIntegral(length list)
+    where list = [sys1 s | s <- ss]

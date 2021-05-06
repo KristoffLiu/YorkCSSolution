@@ -12,6 +12,5 @@ Your solution should satisfy:
 testSOF1:: Bool
 testSOF1 = tSOF1 s1Db == [("Lisa",65,60),("Mark",50,67)]
 
-
 tSOF1 :: [CS1] -> [(String, Int, Int)]
-tSOF1  = undefined
+tSOF1 ss = [(name s, sys1 s, the1 s) | s <- ss, sof1 s > 70]

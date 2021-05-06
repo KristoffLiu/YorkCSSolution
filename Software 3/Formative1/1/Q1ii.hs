@@ -21,5 +21,5 @@ testAl = (isAlphabet "" == True ) &&
  (isAlphabet "Software" == True)
 
 
-isAlphabet :: Predicate String 
-isAlphabet = all (`elem` (['A'..'Z']++['a'..'z']))
+isAlphabet :: Predicate String
+isAlphabet = all(`elem`(['a'..'z']++['A'..'Z']))

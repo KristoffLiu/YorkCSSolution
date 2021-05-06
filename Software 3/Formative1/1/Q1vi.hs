@@ -16,4 +16,7 @@ testM2int =
 
 
 maybe2int :: [Maybe Int] -> Int 
-maybe2int = undefined
+maybe2int [] = 0
+maybe2int ((Just a) : xs) = a + maybe2int (xs)
+maybe2int ((Nothing) : xs) = maybe2int (xs)
+

@@ -17,4 +17,10 @@ testsqDiff =
 
 
 sqDiff :: [Int] -> [Int]
-sqDiff = undefined
+sqDiff [] = []
+sqDiff [x] = []
+sqDiff (x:xs:xt)
+    |x > xs = (c * c) : sqDiff (xs:xt)
+    |otherwise = sqDiff (xs:xt)
+    where
+        c = x - xs

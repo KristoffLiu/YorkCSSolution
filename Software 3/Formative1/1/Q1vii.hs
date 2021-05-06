@@ -24,4 +24,17 @@ testcmb = (cmb "Hello" [] [] == []) &&
 
 
 cmb :: Num a => String -> [a] -> [a] -> [a]
-cmb = undefined
+cmb str fs ss
+    | str == "Prod" = cmbProd fs ss
+    | str == "List" = cmbList fs ss
+    | otherwise = []
+
+cmbProd :: Num x => [x] -> [x] -> [x]
+cmbProd fs ss = map multieach (zip fs ss)
+    where
+    multieach (x,y) = x*y
+
+cmbList :: [a] -> [a] -> [a]
+cmbList fs ss = foldr (++) [] (map tuple2list (zip ss fs))
+    where
+        tuple2list (x,y) = [x,y]

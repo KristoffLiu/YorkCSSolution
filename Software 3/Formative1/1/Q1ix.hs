@@ -22,4 +22,12 @@ testvowelDigit =
 
 
 vowelDigit :: String -> Bool  
-vowelDigit = undefined
+vowelDigit "" = False
+vowelDigit str =
+    length str >= 2 
+    && even(length str) 
+    && and [(odd index && isVowel c) || (even index && isDigit c) | (c, index) <- zip str [1..]]
+    where
+        isVowel = (`elem` "aeiouAEIOU")
+        isDigit = (`elem` "0123456789")
+

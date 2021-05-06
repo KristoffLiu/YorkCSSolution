@@ -13,5 +13,9 @@ testBal = (isTreeBal (nullBR) == True ) &&
     (isTreeBal (Branch (Branch (Lf 2) 1 (Lf 2)) 2 (Branch (Lf 2) 3 (Lf 2))) == True ) 
 
 
-isTreeBal :: BinTree a -> Bool
-isTreeBal = undefined
+isTreeBal :: BinTree a -> Bool 
+isTreeBal (Lf n) = True 
+isTreeBal (Branch left y right) = isTreeBal left && isTreeBal right && (fromRoot left == fromRoot right)
+    where
+      fromRoot (Lf x) = x 
+      fromRoot (Branch lf rn rt) = max (fromRoot lf) (fromRoot rt)

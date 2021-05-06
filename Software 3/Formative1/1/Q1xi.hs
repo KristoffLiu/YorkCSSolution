@@ -16,4 +16,11 @@ testBcode =
   (toBarcode " " == Nothing)
 
 toBarcode :: String -> Maybe String  
-toBarcode = undefined
+toBarcode "" = Just ""
+toBarcode str
+  |and [isBinary char|char <- str] = Just [toBarcode char|char <- str]
+  |otherwise = Nothing
+  where
+    isBinary = (`elem` "10")
+    toBarcode '0' = '.'
+    toBarcode '1' = '|'

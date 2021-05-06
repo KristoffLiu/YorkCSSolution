@@ -18,4 +18,9 @@ testcmbProd =
         [0.782,4.42,16.548000000000002,1.2]) 
 
 cmbProd :: Num x => [x] -> [x] -> [x]
-cmbProd fs ss = 
+cmbProd fs ss = map multieach (zip fs ss)
+    where
+    multieach (x,y) = x*y
+
+-- input [2, 3, 4] [5, 6] 
+-- zip -> [(2, 5), (3, 6)] 

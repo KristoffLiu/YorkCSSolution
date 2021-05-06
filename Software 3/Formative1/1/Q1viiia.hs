@@ -29,4 +29,8 @@ test1MK :: Bool
 test1MK = the1Mk s1Db == [("Beth",65),("Adam",55),("Lisa",60),("Will",71),("Mark",67)]
 
 the1Mk :: [CS1] -> [(String, Int)]
-the1Mk = undefined
+the1Mk db = map takeNameAndTHE1 db
+    where takeNameAndTHE1 s = (name(s), the1(s))
+
+the1Mk' :: [CS1] -> [(String, Int)]
+the1Mk' ss = [(name s, the1 s) | s <- ss]
