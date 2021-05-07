@@ -32,4 +32,5 @@ Implement a function that returns a player's opponent.
 -}
 
 opponent :: Player -> Player
-opponent = undefined
+opponent Red = Green
+opponent Green = Red
