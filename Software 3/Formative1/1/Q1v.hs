@@ -19,8 +19,12 @@ testsqDiff =
 sqDiff :: [Int] -> [Int]
 sqDiff [] = []
 sqDiff [x] = []
-sqDiff (x:xs:xt)
-    |x > xs = (c * c) : sqDiff (xs:xt)
-    |otherwise = sqDiff (xs:xt)
-    where
-        c = x - xs
+sqDiff (a:b:list)
+    | a > b = (c * c) : sqDiff (b:list)
+    | otherwise = sqDiff (b:list)
+    where c = a - b
+
+
+-- arithmitic expression 表达运算优先级
+-- tuple 元组
+

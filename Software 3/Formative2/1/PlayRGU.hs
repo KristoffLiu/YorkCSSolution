@@ -1,13 +1,6 @@
 module PlayRGU (play) where
 import Formative2
-
-import Q1i 
-import Q1ii
-import Q1iii 
-import Q1iv 
-import Q1v
-import Q1vi
-import Q1vii
+import Formative2Soln
 
 ppB :: Placing -> String -- prettyprint Placing
 ppB b =

@@ -15,5 +15,5 @@ testN =
     (treeNodes (Branch (Branch (Lf 2) 1 (Lf 2)) 2 (Branch (Lf 2) 3 (Lf 2))) == 3)
 
 treeNodes :: BinTree a -> Int
-treeNodes (Lf n) = 0
+treeNodes (Lf x) = 0
 treeNodes (Branch left node right) = 1 + treeNodes left + treeNodes right

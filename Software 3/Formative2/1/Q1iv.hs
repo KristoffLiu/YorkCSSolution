@@ -50,10 +50,54 @@ possibleMovesTest =
   (possibleMoves allOnBoardGS 4  == [OnBoard Sq_1,OnBoard Sq_2,OnBoard Sq_3,OnBoard Sq_4,OnBoard Sq12,OnBoard Sq13,OnBoard Sq14]) &&
   (possibleMoves allOnBoardGS' 4 == [OnBoard Sq_1,OnBoard Sq_2,OnBoard Sq_3,OnBoard Sq_4,OnBoard Sq11,OnBoard Sq13,OnBoard Sq14]) 
 
+minDice, maxDice :: Int
+minDice = 0
+maxDice = 4
 
+piecesPerPlayer :: Int
+piecesPerPlayer = 7
+
+sharedRosette :: Position
+sharedRosette = OnBoard Sq_8
+
+notHome, shared, rosettes :: [Position]
+notHome = [Start .. OnBoard Sq14]
+shared = [OnBoard Sq_5 .. OnBoard Sq12]
+rosettes = [OnBoard Sq_4, OnBoard Sq_8, OnBoard Sq14]
 
 possibleMoves :: GameState -> Int -> [Position]
-possibleMoves = undefined
+possibleMoves (GameState (Placing plc) player) n = filter isValid notHome
+  where
+    -- element元素
+    isValid e = 
+      minDice <= n && maxDice >= n
+      && plc e player /= 0
+      && (isTargetEmpty player || np == Home)
+      && (np /= sharedRosette || isTargetEmpty (opponent player))
+      where 
+        np = newPosition e n
+        isTargetEmpty p = (plc np p) == 0
+
+newPosition :: Position -> Int -> Position
+newPosition e n = toEnum (((fromEnum e) + n) `min` 15)
+
+instance Enum Position where
+  fromEnum Start = 0
+  fromEnum (Onboard sq) = 1 + fromEnum sq
+  fromEnum Home = 15
+  toEnum 0 = Start
+  toEnum 15 = Home
+  toEnum n = Onboard (toEnum (n-1))
+
+
+-- map    fx [list]
+-- filter fx [list] (fx 布尔值)
+-- Placing (Position -> Player -> Int)
+
+
+
+
+
 
 {-
 

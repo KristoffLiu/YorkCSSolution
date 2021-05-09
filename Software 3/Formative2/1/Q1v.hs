@@ -26,5 +26,28 @@ If you chose to do so, uncomment the following line
 Implement the function which, given a game state and a dice
 roll/position pair, returns the new game state.
 -}
+
+-- Game State 游戏状态 每一回合的所有信息
 move :: GameState -> (Int, Position) -> GameState
-move = undefined
+move g@(GameState c@(Placing plc) p) m@(n, pos)
+   | null posMove = GameState c (opponent p)
+   | p `elem` posMove = GameState () nextPlayer
+   | otherwise = g
+   where 
+      posMove = possibleMoves g n -- <- Possible Positions
+      nextPlacing pos' player' | thisPlayer pos = currentPlacing - 1
+                               | thisPlayer np = currentPlacing + 1
+                               | oppoPlayer np = 0
+                               | oppoPlayer Start = currentPlacing + 1
+                               | otherwise = currentPlacing
+         where 
+            thisPlayer q = q == pos' && player' == p
+            oppoPlayer q = q == pos' && player' == (opponent p)
+            currentPlacing = plc pos' player'
+      nextPlayer  | np `elem` rosette = p
+                  | otherwise = (opponent p)
+      np = newPosition p n
+
+
+
+-- a@b -> a as b

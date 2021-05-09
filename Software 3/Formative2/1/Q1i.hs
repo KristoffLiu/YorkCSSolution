@@ -34,3 +34,4 @@ Implement a function that returns a player's opponent.
 opponent :: Player -> Player
 opponent Red = Green
 opponent Green = Red
+

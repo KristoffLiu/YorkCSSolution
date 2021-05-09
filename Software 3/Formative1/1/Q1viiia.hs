@@ -29,8 +29,11 @@ test1MK :: Bool
 test1MK = the1Mk s1Db == [("Beth",65),("Adam",55),("Lisa",60),("Will",71),("Mark",67)]
 
 the1Mk :: [CS1] -> [(String, Int)]
-the1Mk db = map takeNameAndTHE1 db
-    where takeNameAndTHE1 s = (name(s), the1(s))
+the1Mk db = [(name student, the1 student)|student <- db]
 
+-- map fx list 映射
+-- map (+1) [1,2,3,4,5,6] = [2,3,4,5,6,7]
 the1Mk' :: [CS1] -> [(String, Int)]
-the1Mk' ss = [(name s, the1 s) | s <- ss]
+the1Mk' db = map takeNameAndThe1 db
+    where takeNameAndThe1 x = (name x, the1 x) 
+

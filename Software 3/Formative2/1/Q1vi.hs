@@ -29,7 +29,11 @@ gameOverTest =
 
 
 gameOver :: GameState               -> Maybe Player
-gameOver = undefined
+gameOver (GameState (Placing plc) _)
+  | isWin Red   = Just Red
+  | isWin Green = Just Green
+  | otherwise = Nothing
+  where isWin player = (plc Home player) == piecesPerPlayer
 
 {-
 For the purposes of `gameOverTest`, you will have to define `allGreenHomeGS :: GameState` to reflect all player `Red` pieces (tokens) at `Home` and `allRedHomeGS :: GameState` when all player `Green` pieces are at `Home`.

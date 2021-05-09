@@ -18,3 +18,5 @@ Define `nullBR` to be the smallest possible balanced, length-regular tree.
 -}
 nullBR :: BinTree x 
 nullBR = Lf 0
+
+-- null balanced tree

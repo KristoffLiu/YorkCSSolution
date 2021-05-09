@@ -3,7 +3,9 @@ import Q1xa
 
 {-
 Write a function `isTreeBal` which returns `True` when applied to a
-balanced tree, and `False` otherwise. Remember, for a length-regular, balanced tree the value in a leaf is the length of the path from the root to the leaf. You can _assume_ that the tree is length-regular when testing balance.
+balanced tree, and `False` otherwise. 
+Remember, for a length-regular, balanced tree the value in a leaf is the length of the path from the root to the leaf.
+You can _assume_ that the tree is length-regular when testing balance.
 
 Your solution should satisfy: 
 -}
@@ -14,8 +16,12 @@ testBal = (isTreeBal (nullBR) == True ) &&
 
 
 isTreeBal :: BinTree a -> Bool 
-isTreeBal (Lf n) = True 
-isTreeBal (Branch left y right) = isTreeBal left && isTreeBal right && (fromRoot left == fromRoot right)
+isTreeBal (Lf x) = True
+isTreeBal (Branch left node right) = 
+    isTreeBal left
+    && isTreeBal right
+    && fromRoot left == fromRoot right
     where
-      fromRoot (Lf x) = x 
-      fromRoot (Branch lf rn rt) = max (fromRoot lf) (fromRoot rt)
+        fromRoot (Lf x) = x
+        fromRoot (Branch left node right) = max (fromRoot left) (fromRoot right)
+

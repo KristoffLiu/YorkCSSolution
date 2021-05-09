@@ -44,9 +44,13 @@ A game state consists of:
 * the identity of the next player.
 
 -}
-type Placing = () -- UNDEFINED TYPE
-placing :: Placing -> Position -> Player -> Int
-placing = undefined
+-- type Placing = () -- UNDEFINED TYPE
+-- placing :: Placing -> Position -> Player -> Int
+
+-- data, type, newtype, typeclass
+-- newtype Age = Age Int
+newtype Placing = Placing (Position -> Player -> Int)
+
 data GameState = GameState Placing Player
 
 {-
@@ -60,3 +64,7 @@ Implement the type `Placing` and the function `placing`.
   player `q` has at position `p` in placing `b`.
 
 -}
+
+
+
+
