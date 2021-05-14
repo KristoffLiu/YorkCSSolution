@@ -254,6 +254,9 @@ the1Mk :: [CS1] -> [(String, Int)]
 the1Mk ss = [(name s, the1 s) | s <- ss] 
 
 
+[(name s, the1 s) | s <- ss]
+
+
 {-
 ### Qviiib: [3 mark]
 Write a function `tSOF1` that takes `s1Db` and return a list of tuples of the name, SYS1 mark and THE1 mark for all students who scored more than 70 in SOF1.

@@ -29,7 +29,6 @@ cmb str fs ss
     | str == "List" = cmbList fs ss
     | otherwise = []
 
-
 cmbProd :: Num x => [x] -> [x] -> [x]
 cmbProd fs ss = map multieach (zip fs ss)
     where

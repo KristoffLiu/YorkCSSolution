@@ -15,6 +15,11 @@ find g w
         w `within` ss = any (subString w) ss
 
 
+-- w = "ab"
+-- ss = ["asjdhkajdhaskd","ababababab","evrbbfds"]
+
+
+
 
 -- 前缀 中缀 后缀
 -- function x x

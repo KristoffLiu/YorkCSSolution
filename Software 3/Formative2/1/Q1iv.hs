@@ -54,8 +54,7 @@ minDice, maxDice :: Int
 minDice = 0
 maxDice = 4
 
-piecesPerPlayer :: Int
-piecesPerPlayer = 7
+
 
 sharedRosette :: Position
 sharedRosette = OnBoard Sq_8
@@ -88,6 +87,8 @@ instance Enum Position where
   toEnum 0 = Start
   toEnum 15 = Home
   toEnum n = Onboard (toEnum (n-1))
+
+
 
 
 -- map    fx [list]

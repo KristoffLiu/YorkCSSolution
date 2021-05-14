@@ -4,7 +4,8 @@ import Q1viiia
 
 {-
 
-Write a function `tSOF1` that takes `y1Db` and return a list of tuples of the name, SYS1 mark and THE1 mark for all students who score more than 70 in SOF1.
+Write a function `tSOF1` that takes `y1Db` and return a list of tuples of the name, 
+SYS1 mark and THE1 mark for all students who score more than 70 in SOF1.
 
 Your solution should satisfy:
 -}
